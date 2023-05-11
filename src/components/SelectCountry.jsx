@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-const SelectCountry = ({ action }) => {
+const SelectCountry = ({ reducer, value, label }) => {
   const dispatch = useDispatch()
   const country = useSelector((state) => state.currency.currencies)
 
   const handleInput = (e) => {
     const curCode = e.target.value.split(' ')[0]
-    dispatch(action(curCode))
+    dispatch(reducer(curCode))
   }
 
   return (
     <>
-      <input type="text" list="country" onChange={handleInput} />
+      <label htmlFor="country"> {label} </label>
+      <input type="text" list="country" value={value} onChange={handleInput} />
       <datalist id="country">
         {country.map((country) => (
           <option

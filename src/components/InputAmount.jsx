@@ -1,7 +1,7 @@
 import { debounce } from 'debounce'
 import { useCallback, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setAmount } from '../redux/currencySlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAmount, setFromValue, setToValue } from '../redux/currencySlice'
 
 const InputAmount = () => {
   const dispatch = useDispatch()
@@ -10,7 +10,7 @@ const InputAmount = () => {
   const handRequest = useCallback(
     debounce((amount) => {
       dispatch(setAmount(amount))
-    }, 700),
+    }, 1000),
     []
   )
 
