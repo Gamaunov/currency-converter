@@ -1,5 +1,11 @@
+import Converter from "./components/Converter"
+
 function App() {
-  return <></>
+  return (
+    <section className="main">
+      <Converter />
+    </section>
+  )
 }
 
 export default App

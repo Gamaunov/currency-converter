@@ -1,0 +1,17 @@
+@import './fonts.scss';
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'SourseCodePro', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  background-color: #222;
+}
