@@ -3,7 +3,7 @@
 
 ### Получить бесплатный ключ Вы можете здесь: <a href='https://freecurrencyapi.com/' target="_blank">freecurrencyapi<a/>
 
-### Доступные валюты для конвертации: <a href='https://freecurrencyapi.com/docs/currency-list' target="_blank">freecurrencyapi (Currency List)<a/>
+### Доступные валюты для конвертации в документации freecurrencyapi в разделе #Currency List
 
   <img src="https://github.com/Gamaunov/currency-converter/blob/main/src/assets/design.png"/>
 
