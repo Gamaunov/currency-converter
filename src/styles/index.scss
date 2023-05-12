@@ -4,4 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    margin: 100px auto;
+  }
+  @media (max-width: 480px) {
+    margin: 50px auto;
+  }
 }
