@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { MdClear } from 'react-icons/md'
+
 import s from './SelectCurrency.module.scss'
 import { setResult } from '../../redux/converterSlice'
 

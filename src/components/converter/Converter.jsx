@@ -29,10 +29,11 @@ const Converter = () => {
     getCurrency()
   }, [from, to, amount])
 
-  const loader = status === PENDING ? <Loader /> : null
+  const loader = status === PENDING ? <Loader className={s.loader} /> : null
 
   const curResult = isThisNumber(result) ? result * amount : 0
-  const rate = isThisNumber(result) ? `стоит ${result}` : '' 
+  const rate = isThisNumber(result) ? result : ''
+  const output = from && rate && `${from} стоит ${rate}${to}`
   const fullNameFrom = currencyList.filter((item) => item.value === from)[0]
     ?.label
   const fullNameTo = currencyList.filter((item) => item.value === to)[0]?.label
@@ -40,12 +41,12 @@ const Converter = () => {
   return (
     <div className={s.converter}>
       <div className={s.card}>
-       {loader}
+        {loader}
         <div className={s.titleInner}>
           <h4 className={s.cardTitle}>У меня есть</h4>
           <h6 className={s.subtitle}>{fullNameFrom}</h6>
         </div>
-        <SelectCurrency value={from} reducer={setFromValue}  />
+        <SelectCurrency value={from} reducer={setFromValue} />
         <InputAmount />
       </div>
       <span>
@@ -59,10 +60,7 @@ const Converter = () => {
         </div>
         <SelectCurrency value={to} reducer={setToValue} />
         {amount === '' ? (
-          <div className={s.output}>
-            {from}  <span className={s.result}>{rate}</span>
-            {to}
-          </div>
+          <div className={s.output}>{output}</div>
         ) : (
           <div className={s.output}>
             <span className={s.result}>{curResult}</span>
