@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import cl from 'classnames'
 
 import s from './Converter.module.scss'
-import { fetchCurrency } from '../../redux/converterSlice.js'
+import { fetchCurrency, PENDING } from '../../redux/converterSlice.js'
 import { setFromValue, setToValue } from '../../redux/currencySlice.js'
 import InputAmount from '../inputAmount/InputAmount.jsx'
 import SelectCurrency from '../selectCurrency/SelectCurrency.jsx'
 import SwitchCurrency from '../switchCurrency/SwitchCurrency.jsx'
 import { isThisNumber } from '../../../utils/isNumber'
 import { currencyList } from '../../../utils/currencyList'
+import Loader from '../loader/Loader'
 
 const Converter = () => {
   const dispatch = useDispatch()
   const from = useSelector((state) => state.currency.from)
+  const status = useSelector((state) => state.converter.status)
   const to = useSelector((state) => state.currency.to)
   const result = useSelector((state) => state.converter.result)
   const amount = useSelector((state) => state.currency.amount)
@@ -28,8 +30,10 @@ const Converter = () => {
     getCurrency()
   }, [from, to, amount])
 
+  const loader = status === PENDING ? <Loader /> : null
+
   const curResult = isThisNumber(result) ? result * amount : 0
-  const rate = isThisNumber(result) ? result : "Проверьте введенные данные"
+  const rate = isThisNumber(result) ? result : 'Проверьте введенные данные'
   const fullNameFrom = currencyList.filter((item) => item.value === from)[0]
     ?.label
   const fullNameTo = currencyList.filter((item) => item.value === to)[0]?.label
@@ -37,6 +41,7 @@ const Converter = () => {
   return (
     <div className={s.converter}>
       <div className={s.card}>
+       {loader}
         <div className={s.titleInner}>
           <h4 className={s.cardTitle}>У меня есть</h4>
           <h6 className={s.subtitle}>{fullNameFrom}</h6>
@@ -48,6 +53,7 @@ const Converter = () => {
         <SwitchCurrency />
       </span>
       <div className={s.card}>
+        {loader}
         <div className={s.titleInner}>
           <h4 className={s.cardTitle}>Хочу приобрести</h4>
           <h6 className={s.subtitle}>{fullNameTo}</h6>

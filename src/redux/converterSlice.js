@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const PENDING = 'PENDING'
-const SUCCEEDED = 'SUCCEEDED'
-const FAILED = 'FAILED'
+export const PENDING = 'PENDING'
+export const SUCCEEDED = 'SUCCEEDED'
+export const FAILED = 'FAILED'
 
 const initialState = {
   result: null,
-
   status: PENDING
 }
 const API_KEY = import.meta.env.VITE_API_KEY
