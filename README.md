@@ -1,9 +1,9 @@
-# <a href='https://currency-converter-i51h2t3ky-gamaunov.vercel.app/' target='_blanc'>Конвертер валют<a/>
+# <a href='https://currency-converter-i51h2t3ky-gamaunov.vercel.app/' target="_blank">Конвертер валют<a/>
 ### В приложении используется переменная окружения которая записана в константу `VITE_API_KEY ` в файле `.env`
 
-### Получить бесплатный ключ Вы можете здесь: <a href='https://freecurrencyapi.com/' target='_blanc'>freecurrencyapi<a/>
+### Получить бесплатный ключ Вы можете здесь: <a href='https://freecurrencyapi.com/' target="_blank">freecurrencyapi<a/>
 
-### Доступные валюты для конвертации: <a href='https://freecurrencyapi.com/docs/currency-list' target='_blanc'>freecurrencyapi (Currency List)<a/>
+### Доступные валюты для конвертации: <a href='https://freecurrencyapi.com/docs/currency-list' target="_blank">freecurrencyapi (Currency List)<a/>
 
   <img src="https://github.com/Gamaunov/currency-converter/blob/main/src/assets/design.png"/>
 
@@ -11,18 +11,18 @@
 
 <ul>
   <li>
-    <a href='https://react.dev/blog/2023/03/16/introducing-react-dev' target='_blanc'>ReactJS 18<a/>
+    <a href='https://react.dev/blog/2023/03/16/introducing-react-dev' target="_blank">ReactJS 18<a/>
   </li>
   <li>
-   <a href='https://redux-toolkit.js.org/' target='_blanc'>Redux Toolkit<a/>
+   <a href='https://redux-toolkit.js.org/'target="_blank">Redux Toolkit<a/>
   </li>
   <li>
-    <a href='https://axios-http.com/ru/docs/intro' target='_blanc'>Axios<a/>
+    <a href='https://axios-http.com/ru/docs/intro' target="_blank">Axios<a/>
   </li>
   <li>
-    <a href='https://lodash.com/docs/#debounce' target='_blanc'>lodash.debounce<a/>
+    <a href='https://lodash.com/docs/#debounce' target="_blank">lodash.debounce<a/>
   </li>
    <li>
-    <a href='https://react-icons.github.io/react-icons/' target='_blanc'>React Icons<a/>
+    <a href='https://react-icons.github.io/react-icons/' target="_blank">React Icons<a/>
   </li>
 </ul>
