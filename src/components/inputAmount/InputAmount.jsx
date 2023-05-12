@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MdClear } from 'react-icons/md'
 
 import s from './InputAmount.module.scss'
-import { setAmount } from '../../redux/currencySlice.js'
+import { selectAmount, setAmount } from '../../redux/currencySlice.js'
 
 const InputAmount = () => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
-  const amount = useSelector((state) => state.currency.amount)
+  const amount = useSelector(selectAmount)
   const handleRequest = useCallback(
     debounce((amount) => {
       dispatch(setAmount(amount))

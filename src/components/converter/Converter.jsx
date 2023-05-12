@@ -2,8 +2,19 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import s from './Converter.module.scss'
-import { fetchCurrency, PENDING } from '../../redux/converterSlice.js'
-import { setFromValue, setToValue } from '../../redux/currencySlice.js'
+import {
+  fetchCurrency,
+  PENDING,
+  selectResult,
+  selectStatus
+} from '../../redux/converterSlice.js'
+import {
+  selectAmount,
+  selectFrom,
+  selectTo,
+  setFromValue,
+  setToValue
+} from '../../redux/currencySlice.js'
 import InputAmount from '../inputAmount/InputAmount.jsx'
 import SelectCurrency from '../selectCurrency/SelectCurrency.jsx'
 import SwitchCurrency from '../switchCurrency/SwitchCurrency.jsx'
@@ -13,11 +24,11 @@ import Loader from '../loader/Loader'
 
 const Converter = () => {
   const dispatch = useDispatch()
-  const from = useSelector((state) => state.currency.from)
-  const to = useSelector((state) => state.currency.to)
-  const result = useSelector((state) => state.converter.result)
-  const amount = useSelector((state) => state.currency.amount)
-  const status = useSelector((state) => state.converter.status)
+  const from = useSelector(selectFrom)
+  const to = useSelector(selectTo)
+  const result = useSelector(selectResult)
+  const amount = useSelector(selectAmount)
+  const status = useSelector(selectStatus)
 
   useEffect(() => {
     const getCurrency = () => {

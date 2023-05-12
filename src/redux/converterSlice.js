@@ -56,4 +56,7 @@ export const converterSlice = createSlice({
 
 export const { setResult } = converterSlice.actions
 
+export const selectResult = (state) => state.converter.result
+export const selectStatus = (state) => state.converter.status
+
 export default converterSlice.reducer

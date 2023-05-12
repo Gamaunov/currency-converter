@@ -3,12 +3,17 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/all'
 import { useState } from 'react'
 
 import s from './SwitchCurrency.module.scss'
-import { setFromValue, setToValue } from '../../redux/currencySlice.js'
+import {
+  selectFrom,
+  selectTo,
+  setFromValue,
+  setToValue
+} from '../../redux/currencySlice.js'
 
 const SwitchCurrency = () => {
   const dispatch = useDispatch()
-  const from = useSelector((state) => state.currency.from)
-  const to = useSelector((state) => state.currency.to)
+  const from = useSelector(selectFrom)
+  const to = useSelector(selectTo)
   const [toggle, setToggle] = useState(false)
   const handleSwitch = () => {
     dispatch(setToValue(from))
