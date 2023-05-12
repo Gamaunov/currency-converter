@@ -33,7 +33,6 @@ const Converter = () => {
   useEffect(() => {
     const getCurrency = () => {
       if (from && to) {
-        console.log('+')
         dispatch(fetchCurrency({ from, to }))
       }
     }
