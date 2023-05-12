@@ -50,6 +50,4 @@ export const converterSlice = createSlice({
   }
 })
 
-// export const { setFromValue, setToValue, setAmount } = converterSlice.actions
-
 export default converterSlice.reducer

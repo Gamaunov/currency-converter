@@ -3,9 +3,9 @@ import { currencyList } from '../../utils/currencyList'
 
 const initialState = {
   currencies: currencyList,
-  from: null,
-  to: null,
-  amount: 1
+  from: 'RUB',
+  to: 'USD',
+  amount: ''
 }
 
 export const currencySlice = createSlice({

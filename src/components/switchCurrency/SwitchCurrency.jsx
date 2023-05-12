@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setFromValue, setToValue } from '../redux/currencySlice'
+import { HiOutlineSwitchHorizontal } from 'react-icons/all'
+
+import s from './SwitchCurrency.module.scss'
+import { setFromValue, setToValue } from '../../redux/currencySlice.js'
 
 const SwitchCurrency = () => {
   const dispatch = useDispatch()
@@ -10,7 +13,11 @@ const SwitchCurrency = () => {
     dispatch(setToValue(from))
     dispatch(setFromValue(to))
   }
-  return <button onClick={handleSwitch}>SwitchCurrency</button>
+  return (
+    <button className={s.switch} onClick={handleSwitch}>
+      <HiOutlineSwitchHorizontal />
+    </button>
+  )
 }
 
 export default SwitchCurrency

@@ -1,4 +1,4 @@
-import Converter from "./components/Converter"
+import Converter from "./components/converter/Converter.jsx"
 
 function App() {
   return (

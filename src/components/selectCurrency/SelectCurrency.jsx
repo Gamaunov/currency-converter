@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
+import s from './SelectCurrency.module.scss'
 
-const SelectCountry = ({ reducer, value, label }) => {
+const SelectCurrency = ({ reducer, value }) => {
   const dispatch = useDispatch()
-  const country = useSelector((state) => state.currency.currencies)
+  const currency = useSelector((state) => state.currency.currencies)
 
   const handleInput = (e) => {
     const curCode = e.target.value.split(' ')[0]
@@ -10,19 +11,19 @@ const SelectCountry = ({ reducer, value, label }) => {
   }
 
   return (
-    <>
-      <label htmlFor="country"> {label} </label>
-      <input type="text" list="country" value={value} onChange={handleInput} />
+    <fieldset className={s.fieldset}>
+      <legend>Выберите валюту</legend>
+      <input className={s.input} list="country" value={value} onChange={handleInput} />
       <datalist id="country">
-        {country.map((country) => (
+        {currency.map((currency) => (
           <option
-            key={country.code}
-            value={`${country.code} : ${country.country}`}
+            key={currency.value}
+            value={`${currency.value} : ${currency.label}`}
           />
         ))}
       </datalist>
-    </>
+    </fieldset>
   )
 }
 
-export default SelectCountry
+export default SelectCurrency

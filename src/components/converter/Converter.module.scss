@@ -1,0 +1,42 @@
+.converter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: black;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 6.25rem);
+  grid-gap: 10px;
+  background-color: rgb(255, 255, 255);
+  min-height: 18.75rem;
+  padding: 1.25rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 22px 6px rgba(25, 47, 63, 0.38);
+  -moz-box-shadow: 0px 0px 22px 6px rgba(25, 47, 63, 0.38);
+  box-shadow: 0px 0px 22px 6px rgba(25, 47, 63, 0.38);
+}
+.titleInner {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 50px 30px;
+}
+.cardTitle {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+.output {
+  margin-top: 1.25rem;
+  border-top: 1px solid #000;
+}
+.result {
+  font-weight: 900;
+}
+.subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-currency);
+}

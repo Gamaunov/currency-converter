@@ -1,0 +1,13 @@
+.fieldset {
+  color: var(--color-outline);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+.input {
+  width: 14.375rem;
+  height: 2.1875rem;
+  padding: 10px 5px;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  outline-color: var(--color-outline);
+}

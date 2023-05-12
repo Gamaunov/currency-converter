@@ -1,10 +1,15 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCurrency } from '../redux/converterSlice'
-import { setFromValue, setToValue } from '../redux/currencySlice'
-import InputAmount from './InputAmount'
-import SelectCountry from './SelectCountry'
-import SwitchCurrency from './SwitchCurrency'
+import cl from 'classnames'
+
+import s from './Converter.module.scss'
+import { fetchCurrency } from '../../redux/converterSlice.js'
+import { setFromValue, setToValue } from '../../redux/currencySlice.js'
+import InputAmount from '../inputAmount/InputAmount.jsx'
+import SelectCurrency from '../selectCurrency/SelectCurrency.jsx'
+import SwitchCurrency from '../switchCurrency/SwitchCurrency.jsx'
+import { isThisNumber } from '../../../utils/isNumber'
+import { currencyList } from '../../../utils/currencyList'
 
 const Converter = () => {
   const dispatch = useDispatch()
@@ -23,26 +28,42 @@ const Converter = () => {
     getCurrency()
   }, [from, to, amount])
 
+  const curResult = isThisNumber(result) ? result * amount : 0
+  const rate = isThisNumber(result) ? result : "Проверьте введенные данные"
+  const fullNameFrom = currencyList.filter((item) => item.value === from)[0]
+    ?.label
+  const fullNameTo = currencyList.filter((item) => item.value === to)[0]?.label
+
   return (
-    <div className="converter">
-      <div>
-        <h4>У меня есть</h4>
+    <div className={s.converter}>
+      <div className={s.card}>
+        <div className={s.titleInner}>
+          <h4 className={s.cardTitle}>У меня есть</h4>
+          <h6 className={s.subtitle}>{fullNameFrom}</h6>
+        </div>
+        <SelectCurrency value={from} reducer={setFromValue} />
         <InputAmount />
-        <SelectCountry
-          label="Выберете валюту"
-          value={from}
-          reducer={setFromValue}
-        />
       </div>
-      <SwitchCurrency />
-      <div>
-        <h4>Хочу приобрести</h4>
-        <SelectCountry
-          label="Выберете валюту"
-          value={to}
-          reducer={setToValue}
-        />
-        {amount !== '' ? <div>{amount * result} </div> : <div> {result} </div>}
+      <span>
+        <SwitchCurrency />
+      </span>
+      <div className={s.card}>
+        <div className={s.titleInner}>
+          <h4 className={s.cardTitle}>Хочу приобрести</h4>
+          <h6 className={s.subtitle}>{fullNameTo}</h6>
+        </div>
+        <SelectCurrency value={to} reducer={setToValue} />
+        {amount === '' ? (
+          <div className={s.output}>
+            {from} стоит <span className={s.result}>{rate}</span>
+            {to}
+          </div>
+        ) : (
+          <div className={s.output}>
+            <span className={s.result}>{curResult}</span>
+            {to}
+          </div>
+        )}
       </div>
     </div>
   )
