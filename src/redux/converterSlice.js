@@ -33,6 +33,11 @@ export const fetchCurrency = createAsyncThunk(
 export const converterSlice = createSlice({
   name: 'converter',
   initialState,
+  reducers: {
+    setResult: (state, action) => {
+      state.result = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCurrency.pending, (state) => {
@@ -48,5 +53,7 @@ export const converterSlice = createSlice({
       })
   }
 })
+
+export const { setResult } = converterSlice.actions
 
 export default converterSlice.reducer

@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import cl from 'classnames'
 
 import s from './Converter.module.scss'
 import { fetchCurrency, PENDING } from '../../redux/converterSlice.js'
@@ -15,10 +14,10 @@ import Loader from '../loader/Loader'
 const Converter = () => {
   const dispatch = useDispatch()
   const from = useSelector((state) => state.currency.from)
-  const status = useSelector((state) => state.converter.status)
   const to = useSelector((state) => state.currency.to)
   const result = useSelector((state) => state.converter.result)
   const amount = useSelector((state) => state.currency.amount)
+  const status = useSelector((state) => state.converter.status)
 
   useEffect(() => {
     const getCurrency = () => {
@@ -33,7 +32,7 @@ const Converter = () => {
   const loader = status === PENDING ? <Loader /> : null
 
   const curResult = isThisNumber(result) ? result * amount : 0
-  const rate = isThisNumber(result) ? result : 'Проверьте введенные данные'
+  const rate = isThisNumber(result) ? `стоит ${result}` : '' 
   const fullNameFrom = currencyList.filter((item) => item.value === from)[0]
     ?.label
   const fullNameTo = currencyList.filter((item) => item.value === to)[0]?.label
@@ -46,7 +45,7 @@ const Converter = () => {
           <h4 className={s.cardTitle}>У меня есть</h4>
           <h6 className={s.subtitle}>{fullNameFrom}</h6>
         </div>
-        <SelectCurrency value={from} reducer={setFromValue} />
+        <SelectCurrency value={from} reducer={setFromValue}  />
         <InputAmount />
       </div>
       <span>
@@ -61,7 +60,7 @@ const Converter = () => {
         <SelectCurrency value={to} reducer={setToValue} />
         {amount === '' ? (
           <div className={s.output}>
-            {from} стоит <span className={s.result}>{rate}</span>
+            {from}  <span className={s.result}>{rate}</span>
             {to}
           </div>
         ) : (

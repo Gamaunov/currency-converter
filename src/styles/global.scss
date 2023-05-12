@@ -25,6 +25,9 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+input[list='country']::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
 h1,
 h2,
 h3,
