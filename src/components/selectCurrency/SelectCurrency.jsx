@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MdClear } from 'react-icons/md'
 
 import s from './SelectCurrency.module.scss'
-import { setResult } from '../../redux/converterSlice'
-import { selectCurrencies } from '../../redux/currencySlice'
-
+import { setResult } from '../../store/rate'
+import { selectCurrencies } from '../../store/selectors'
 const SelectCurrency = ({ reducer, value }) => {
   const dispatch = useDispatch()
   const currency = useSelector(selectCurrencies)
+
   const handleInput = (e) => {
     const curCode = e.target.value.split(' ')[0]
     dispatch(reducer(curCode))

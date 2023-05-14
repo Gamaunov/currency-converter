@@ -2,25 +2,21 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import s from './Converter.module.scss'
-import {
-  fetchCurrency,
-  PENDING,
-  selectResult,
-  selectStatus
-} from '../../redux/converterSlice.js'
-import {
-  selectAmount,
-  selectFrom,
-  selectTo,
-  setFromValue,
-  setToValue
-} from '../../redux/currencySlice.js'
+import { isThisNumber } from '../../../utils/isNumber'
+import { currencyList } from '../../../utils/currencyList'
 import InputAmount from '../inputAmount/InputAmount.jsx'
 import SelectCurrency from '../selectCurrency/SelectCurrency.jsx'
 import SwitchCurrency from '../switchCurrency/SwitchCurrency.jsx'
-import { isThisNumber } from '../../../utils/isNumber'
-import { currencyList } from '../../../utils/currencyList'
 import Loader from '../loader/Loader'
+import { getRate, setFromValue, setStatus, setToValue } from '../../store/rate'
+import { PENDING, SUCCEEDED } from '../../store/constants'
+import {
+  selectAmount,
+  selectFrom,
+  selectResult,
+  selectStatus,
+  selectTo
+} from '../../store/selectors'
 
 const Converter = () => {
   const dispatch = useDispatch()
@@ -33,13 +29,14 @@ const Converter = () => {
   useEffect(() => {
     const getCurrency = () => {
       if (from && to) {
-        dispatch(fetchCurrency({ from, to }))
+        dispatch(setStatus(PENDING))
+        dispatch(getRate())
       }
     }
     getCurrency()
-  }, [from, to, amount])
+  }, [from, to])
 
-  const loader = status === PENDING ? <Loader className={s.loader} /> : null
+  const loader = status === PENDING ? <Loader /> : null
 
   const curResult = isThisNumber(result) ? result * amount : 0
   const rate = isThisNumber(result) ? result : ''
@@ -47,7 +44,6 @@ const Converter = () => {
   const fullNameFrom = currencyList.filter((item) => item.value === from)[0]
     ?.label
   const fullNameTo = currencyList.filter((item) => item.value === to)[0]?.label
-
   return (
     <div className={s.converter}>
       <div className={s.card}>
@@ -70,10 +66,12 @@ const Converter = () => {
         </div>
         <SelectCurrency value={to} reducer={setToValue} />
         {amount === '' ? (
-          <div className={s.output}>{output}</div>
+          <div className={s.output}>{status === SUCCEEDED && output}</div>
         ) : (
           <div className={s.output}>
-            <span className={s.result}>{curResult}</span>
+            <span className={s.result}>
+              {status === SUCCEEDED && curResult}
+            </span>
             {to}
           </div>
         )}

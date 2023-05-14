@@ -1,0 +1,7 @@
+export const PENDING = 'PENDING'
+export const SUCCEEDED = 'SUCCEEDED'
+export const FAILED = 'FAILED'
+export const SET_RESULT = 'SET_RESULT'
+export const SET_FROM_VALUE = 'SET_FROM_VALUE'
+export const SET_TO_VALUE = 'SET_TO_VALUE'
+export const SET_AMOUNT = 'SET_AMOUNT'
