@@ -17,6 +17,9 @@
    <a href='https://redux-toolkit.js.org/'target="_blank">Redux Toolkit<a/>
   </li>
   <li>
+    <a href='https://redux-saga.js.org/' target="_blank">Redux-Saga<a/>
+  </li>
+  <li>
     <a href='https://axios-http.com/ru/docs/intro' target="_blank">Axios<a/>
   </li>
   <li>
